@@ -26,7 +26,7 @@ const constants = {
     "Entertainment: Japanese Anime & Manga",
     "Entertainment: Cartoon & Animations",
   ],
-  types: ["Any Type", "Multiple Choice", "True / False"],
-  difficulties: ["Any Difficulty", "Hard", "Medium", "Easy"],
+  types: ["Any Type", "Multiple", "True / False"],
+  difficulty: ["Any Difficulty", "Hard", "Medium", "Easy"],
 };
 export default constants;

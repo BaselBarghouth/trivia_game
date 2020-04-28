@@ -1,12 +1,12 @@
 import React from "react";
 import Form from "../components/Form";
-import TestKindContextProvider from "../contexts/TestKindContext";
+import TestContextProvider from "../contexts/TestContext";
 const Home = (props) => {
   return (
     <div className="form">
-      <TestKindContextProvider>
-        <Form />
-      </TestKindContextProvider>
+      <TestContextProvider>
+        <Form {...props} />
+      </TestContextProvider>
     </div>
   );
 };

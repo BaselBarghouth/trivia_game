@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import constants from "../contants";
-import { TestKindContext } from "../contexts/TestKindContext";
-const FormPicker = () => {
-  let { test, changeTest } = useContext(TestKindContext);
+import constants from "../constants";
+import { TestContext } from "../contexts/TestContext";
+const FormPicker = (props) => {
+  const [test, changeTest] = useContext(TestContext);
 
   return (
     <Form>
@@ -45,7 +45,7 @@ const FormPicker = () => {
           name="difficulty"
           as="select"
         >
-          {constants.difficulties.map((el, index) => {
+          {constants.difficulty.map((el, index) => {
             return <option key={index}>{el}</option>;
           })}
         </Form.Control>
@@ -62,7 +62,12 @@ const FormPicker = () => {
           })}
         </Form.Control>
       </Form.Group>
-      <Button onClick={() => console.log(test)} variant="outline-primary">
+      <Button
+        onClick={() =>
+          props.history.push({ pathname: "/game", state: { test } })
+        }
+        variant="outline-primary"
+      >
         Start
       </Button>
     </Form>

@@ -1,8 +1,7 @@
 import React, { useState, createContext } from "react";
 
-export const TestKindContext = createContext();
-
-const TestKindContextProvider = (props) => {
+export const TestContext = createContext();
+const TestContextProvider = (props) => {
   const [test, setTest] = useState({
     numberOfQuestions: "10",
     category: "Any Category",
@@ -15,9 +14,10 @@ const TestKindContextProvider = (props) => {
     setTest(temp);
   };
   return (
-    <TestKindContext.Provider value={{ test, changeTest }}>
+    <TestContext.Provider value={[test, changeTest]}>
       {props.children}
-    </TestKindContext.Provider>
+    </TestContext.Provider>
   );
 };
-export default TestKindContextProvider;
+
+export default TestContextProvider;
