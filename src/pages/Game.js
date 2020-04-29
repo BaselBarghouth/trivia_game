@@ -1,8 +1,14 @@
-import React from "react";
-import { CreateStatmentAndFetchData } from "../controller/CreateStatmentAndFetchData";
+import React, { useEffect, useContext } from "react";
+import QuestionsContextProvider from "../contexts/QuestionsContext";
+import QuestionsContainer from "../components/QuestionsConainer";
+import Header from "../components/Header";
 const Game = (props) => {
-  console.log(CreateStatmentAndFetchData(props.location.state.test), "sdfsf");
-  return <div>Game</div>;
+  return (
+    <QuestionsContextProvider>
+      <Header />
+      <QuestionsContainer {...props} />
+    </QuestionsContextProvider>
+  );
 };
 
 export default Game;
