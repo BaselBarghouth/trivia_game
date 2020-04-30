@@ -1,23 +1,46 @@
-import React, { useContext } from "react";
+import React, { useEffect } from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import { QuestionsContext } from "../contexts/QuestionsContext";
+import { shuffleArray } from "../controller/shuffleArray";
+import Timer from "../components/Timer";
 const SingleQuestion = (props) => {
-  const { game, nextQuestion } = useContext(QuestionsContext);
-  console.log(props.quiz);
+  const { question, correct_answer, incorrect_answers, score } = props;
+  const temp = [...incorrect_answers, correct_answer];
+  const answers = shuffleArray(temp);
+
   return (
     <div className="form">
-      {props.quiz && (
+      {props.question && (
         <Card style={{ width: "45rem" }}>
-          <Card.Img variant="top" src="holder.js/100px180" />
+          <Card.Img variant="top" src="" />
           <Card.Body>
-            <Card.Text>{props.quiz.question}</Card.Text>
-            <Button onClick={() => nextQuestion()} variant="primary">
-              Go somewhere
+            <Timer {...props} />
+            <Button
+              onClick={() => props.control("toggle_joker")}
+              variant="primary"
+            >
+              Joker
             </Button>
-            <Button variant="primary">Go somewhere</Button>
-            <Button variant="primary">Go somewhere</Button>
-            <Button variant="primary">Go somewhere</Button>
+            <Card.Title>{correct_answer}</Card.Title>
+            <Card.Title>{score}</Card.Title>
+            <Card.Text> {question}</Card.Text>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
+              {answers.map((el, index) => (
+                <Button
+                  onClick={(e) => props.control("next_question", el)}
+                  style={{ margin: 10 }}
+                  key={index}
+                  variant="primary"
+                >
+                  {el}
+                </Button>
+              ))}
+            </div>
           </Card.Body>
         </Card>
       )}

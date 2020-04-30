@@ -1,10 +1,10 @@
-import { useEffect, useState, useContext } from "react";
-import { QuestionsContext } from "../contexts/QuestionsContext";
+import { useEffect, useState } from "react";
 export const useFetch = (url) => {
-  const { game, setQuestions } = useContext(QuestionsContext);
+  const [data, setData] = useState();
   useEffect(() => {
     fetch(url).then((response) =>
-      response.json().then((result) => setQuestions(result))
+      response.json().then((result) => setData(result.results))
     );
   }, [url]);
+  return data;
 };

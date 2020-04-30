@@ -3,15 +3,15 @@ import { useFetch } from "../controller/useFetch";
 import { createUrl } from "../controller/createUrl";
 import { QuestionsContext } from "../contexts/QuestionsContext";
 import SingleQuestion from "./SingleQuestion";
+import { shuffleArray } from "../controller/shuffleArray";
+
 const QuestionContainer = (props) => {
-  const url = createUrl(props.location.state.test);
-  useFetch(url);
-  const { game } = useContext(QuestionsContext);
+  //const { correct_answer, incorrect_answers } = question;
   return (
     <div>
-      {game.questions && (
+      {/* {game.questions && (
         <SingleQuestion quiz={game.questions[game.questionNumber]} />
-      )}
+      )} */}
     </div>
   );
 };
