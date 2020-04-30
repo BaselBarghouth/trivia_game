@@ -9,9 +9,11 @@ const TestContextProvider = (props) => {
     type: "Any Type",
   });
   const changeTest = (event) => {
-    let temp = test;
-    temp[event.target.name] = event.target.value;
-    setTest(temp);
+    event.preventDefault();
+
+    const { name, value } = event.target;
+
+    setTest({ ...test, [name]: value });
   };
   return (
     <TestContext.Provider value={[test, changeTest]}>

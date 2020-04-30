@@ -6,17 +6,19 @@ const QuestionsContextProvider = (props) => {
     questions: [],
     joker: true,
     score: 0,
+    questionNumber: 0,
   });
   const setQuestions = (data) => {
-    let temp = game;
-    temp["questions"] = data;
-    setGame(temp);
+    setGame({ ...game, questions: data.results });
   };
   const toogleJoker = () => {};
   const increseScore = () => {};
+  const nextQuestion = () => {
+    setGame({ ...game, questionNumber: game.questionNumber + 1 });
+  };
 
   return (
-    <QuestionsContext.Provider value={[game, setQuestions]}>
+    <QuestionsContext.Provider value={{ game, setQuestions, nextQuestion }}>
       {props.children}
     </QuestionsContext.Provider>
   );
