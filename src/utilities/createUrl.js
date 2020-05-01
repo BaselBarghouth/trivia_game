@@ -1,4 +1,4 @@
-import constants from "../constants";
+import constants from "./constants";
 export const createUrl = (test) => {
   let url = `https://opentdb.com/api.php?amount=${test.numberOfQuestions}`;
   if (test.category !== "Any Category")
@@ -13,5 +13,6 @@ export const createUrl = (test) => {
 
   if (test.difficulty !== "Any Difficulty")
     url += `&difficulty=${test.difficulty.toLowerCase()}`;
+  console.log(url);
   return url;
 };

@@ -1,12 +1,16 @@
 import React from "react";
-import Home from "./pages/Home";
-import Game from "./pages/Game";
+import Form from "./pages/form/Form";
+import Game from "./pages/game/Game";
 import { Route } from "react-router-dom";
+import TestContextProvider from "./context/TestContext";
+import "./App.css";
 function App() {
   return (
     <div className="App">
-      <Route exact path="/" render={(props) => <Home {...props} />} />
-      <Route exact path="/game" render={(props) => <Game {...props} />} />
+      <TestContextProvider>
+        <Route exact path="/" render={() => <Form />} />
+        <Route path="/game" render={() => <Game />} />
+      </TestContextProvider>
     </div>
   );
 }

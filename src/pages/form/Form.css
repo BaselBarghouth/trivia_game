@@ -1,0 +1,15 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 100px;
+}
+.item {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.extra {
+  margin-top: 30px;
+}

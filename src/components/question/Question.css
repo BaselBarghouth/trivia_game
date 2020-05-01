@@ -1,0 +1,16 @@
+.question-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.question {
+  text-align: center;
+  color: #2c3e4a;
+  margin-top: 70px;
+  margin-bottom: 40px;
+}
+.answers {
+  display: flex;
+  flex-direction: column;
+}

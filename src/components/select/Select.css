@@ -1,0 +1,13 @@
+.select {
+  width: 300px;
+  text-align: center;
+  text-align-last: center;
+  justify-content: center;
+  background-color: white;
+  height: 40px;
+  border-radius: 300px;
+  margin: 10px;
+}
+.option {
+  text-align: center;
+}
