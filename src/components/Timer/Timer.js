@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import { TestContext } from "../../context/TestContext";
+import "./Timer.css";
 const Timer = () => {
-  const [seconds, setSeconds] = useState(3);
+  const [seconds, setSeconds] = useState(15);
   const { gameControl } = useContext(TestContext);
   useEffect(() => {
     if (seconds > 0) {
@@ -9,12 +10,12 @@ const Timer = () => {
         setSeconds((seconds) => seconds - 1);
       }, 1000);
       return () => window.clearInterval(id);
+    } else {
+      gameControl("time_out");
     }
   });
-  if (seconds === 0) {
-    gameControl("time_out");
-  }
-  return <div>{seconds}</div>;
+
+  return <div className="timer1">{seconds}</div>;
 };
 
 export default Timer;

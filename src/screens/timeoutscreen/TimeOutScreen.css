@@ -1,14 +1,15 @@
-.animation {
-  width: 350px;
-  height: 350px;
+.animation-time {
+  width: 270px;
+  height: 270px;
 }
-.container {
+.container-time {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
   text-align: center;
   color: #353c4d;
+  font-size: 0.6cm;
 }
 .rr {
   transform: rotate(90deg);

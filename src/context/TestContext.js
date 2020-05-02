@@ -1,7 +1,19 @@
 import React, { useState, createContext } from "react";
 import { useHistory } from "react-router-dom";
 
-export const TestContext = createContext();
+export const TestContext = createContext(null);
+
+const _GameStruct = {    
+  questions: [],
+  joker: true,
+  score: 0,
+  questionNumber: 0,
+  done: false,
+  isAnswered: false,
+  isCorrect: true,
+  isWon: false,
+  time_out: false,
+};
 
 const TestContextProvider = (props) => {
   let history = useHistory();
@@ -12,17 +24,7 @@ const TestContextProvider = (props) => {
     type: "Any Type",
   });
 
-  const [game, setGame] = useState({
-    questions: [],
-    joker: true,
-    score: 0,
-    questionNumber: 0,
-    done: false,
-    isAnswered: false,
-    isCorrect: true,
-    isWon: false,
-    time_out: false,
-  });
+  const [game, setGame] = useState(_GameStruct);
 
   const changeTest = (event) => {
     event.preventDefault();
@@ -54,14 +56,12 @@ const TestContextProvider = (props) => {
               isAnswered: true,
             });
           } else {
-            console.log("pppooo");
             setGame({
               ...game,
               score: game.score + 100,
               isWon: true,
               isAnswered: true,
             });
-            // history.push("/");
           }
         } else {
           setGame({
@@ -80,16 +80,7 @@ const TestContextProvider = (props) => {
         });
         break;
       case "wrong_answer":
-        setGame({
-          questions: [],
-          joker: true,
-          score: 0,
-          questionNumber: 0,
-          done: false,
-          isAnswered: false,
-          isCorrect: true,
-          isWon: false,
-        });
+        setGame(_GameStruct);
         history.push("/");
         break;
       case "time_out":
@@ -100,7 +91,6 @@ const TestContextProvider = (props) => {
           isWon: false,
           time_out: true,
         });
-        //history.push("/");
         break;
       default:
         break;

@@ -1,14 +1,16 @@
-.animation {
-  width: 350px;
-  height: 350px;
+.animation-in {
+  width: 230px;
+  height: 230px;
 }
-.container {
+.container-in {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
   text-align: center;
   color: #353c4d;
+  font-size: 0.6cm;
+  font-weight: bold;
 }
 .rr {
   transform: rotate(90deg);

@@ -1,12 +1,14 @@
-.animation {
-  width: 350px;
-  height: 350px;
+.animation-correct {
+  width: 270px;
+  height: 270px;
 }
-.container {
+.container-correct {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
   text-align: center;
   color: #353c4d;
+  font-size: 0.6cm;
+  font-weight: bold;
 }

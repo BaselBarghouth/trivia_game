@@ -9,14 +9,17 @@ import WinScreen from "../../screens/winscreen/WinScreen";
 import TimeOutScreen from "../../screens/timeoutscreen/TimeOutScreen";
 const Game = () => {
   const { test, gameControl, game } = useContext(TestContext);
-  useEffect(() => {
+  const fetchQuestions = () => {
     const url = createUrl(test);
     fetch(url).then((response) =>
       response
         .json()
         .then((result) => gameControl("add_questions", result.results))
     );
-  }, []);
+  };
+
+  useEffect(fetchQuestions, [])
+  
   return (
     <div>
       {!game.time_out ? (

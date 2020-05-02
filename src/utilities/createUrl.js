@@ -13,6 +13,5 @@ export const createUrl = (test) => {
 
   if (test.difficulty !== "Any Difficulty")
     url += `&difficulty=${test.difficulty.toLowerCase()}`;
-  console.log(url);
   return url;
 };

@@ -7,12 +7,12 @@ import { TestContext } from "../../context/TestContext";
 import { useHistory } from "react-router-dom";
 
 import "./Form.css";
-const Form = (props) => {
+const Form = () => {
   const { test, changeTest } = useContext(TestContext);
   let history = useHistory();
   return (
     <div className="form">
-      <label className="item">
+      <label className="item item-extra">
         Number Of Questions
         <br /> <br />
         {test.numberOfQuestions}

@@ -4,7 +4,7 @@ import "./WinScreen.css";
 import HeaderScreen from "../../components/HeaderScreen/HeaderScreen";
 import Button from "../../components/button/Button";
 import { TestContext } from "../../context/TestContext";
-const InCorrectScreen = (props) => {
+const InCorrectScreen = () => {
   const { game, gameControl } = useContext(TestContext);
   const container = useRef(null);
 
@@ -17,7 +17,6 @@ const InCorrectScreen = (props) => {
         autoplay: true,
         path: "https://assets7.lottiefiles.com/packages/lf20_sYpEFh.json",
       },
-      []
     );
   });
   return (

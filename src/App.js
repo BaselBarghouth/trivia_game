@@ -10,9 +10,9 @@ function App() {
   return (
     <div className="App">
       <TestContextProvider>
-        <Route exact path="/" render={(props) => <Form {...props} />} />
-        <Route path="/game" render={(props) => <Game {...props} />} />
-        <Route path="/correct-screen" render={() => <CorrectScreen />} />{" "}
+        <Route exact path="/" render={() => <Form />} />
+        <Route path="/game" render={() => <Game />} />
+        <Route path="/correct-screen" render={() => <CorrectScreen />} />
         <Route path="/incorrect-screen" render={() => <IncorrectScreen />} />
       </TestContextProvider>
     </div>

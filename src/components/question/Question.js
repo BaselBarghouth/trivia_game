@@ -14,7 +14,7 @@ const Question = () => {
 
   return (
     <div className="question-form">
-      The Right answer is : {correct_answer}
+      {/* The Right answer is : {correct_answer} */}
       {game.joker && <Helpy />}
       <div className="question">{question}</div>
       <div className="answers">
