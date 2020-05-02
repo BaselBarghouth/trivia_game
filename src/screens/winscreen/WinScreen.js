@@ -1,12 +1,13 @@
 import React, { useEffect, useRef, useContext } from "react";
 import lottie from "lottie-web";
-import "./CorrectScreen.css";
+import "./WinScreen.css";
 import HeaderScreen from "../../components/HeaderScreen/HeaderScreen";
 import Button from "../../components/button/Button";
 import { TestContext } from "../../context/TestContext";
-const CorrectScreen = (props) => {
-  const { gameControl } = useContext(TestContext);
+const InCorrectScreen = (props) => {
+  const { game, gameControl } = useContext(TestContext);
   const container = useRef(null);
+
   useEffect(() => {
     lottie.loadAnimation(
       {
@@ -14,7 +15,7 @@ const CorrectScreen = (props) => {
         renderer: "svg",
         loop: true,
         autoplay: true,
-        path: "https://assets3.lottiefiles.com/packages/lf20_Hm1vDH.json",
+        path: "https://assets7.lottiefiles.com/packages/lf20_sYpEFh.json",
       },
       []
     );
@@ -25,21 +26,19 @@ const CorrectScreen = (props) => {
       <div className="container">
         <div className="animation" ref={container}></div>
         <div>
-          CORRECT!
+          YOU WIN!
           <br />
-          <br />
-          You have earn 100 points
-          <br />
-          <br />
+          CONGRATs....
+          <br /> Total: {game.score} Points
         </div>
         <Button
           question={true}
-          title="NEXT QUESTION"
-          clicked={() => gameControl("next")}
+          title="Start Again"
+          clicked={() => gameControl("wrong_answer")}
         />
       </div>
     </div>
   );
 };
 
-export default CorrectScreen;
+export default InCorrectScreen;

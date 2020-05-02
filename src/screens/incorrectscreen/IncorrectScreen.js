@@ -4,11 +4,10 @@ import "./IncorrectScreen.css";
 import HeaderScreen from "../../components/HeaderScreen/HeaderScreen";
 import Button from "../../components/button/Button";
 import { TestContext } from "../../context/TestContext";
-import { useHistory } from "react-router-dom";
 const InCorrectScreen = (props) => {
-  const { game } = useContext(TestContext);
+  const { game, gameControl } = useContext(TestContext);
   const container = useRef(null);
-  const history = useHistory();
+
   useEffect(() => {
     lottie.loadAnimation(
       {
@@ -36,7 +35,7 @@ const InCorrectScreen = (props) => {
         <Button
           question={true}
           title="Start Again"
-          clicked={() => history.push("/")}
+          clicked={() => gameControl("wrong_answer")}
         />
       </div>
     </div>

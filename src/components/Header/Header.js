@@ -3,7 +3,7 @@ import "./Header.css";
 import Timer from "../Timer/Timer";
 import { TestContext } from "../../context/TestContext";
 
-const Header = (props) => {
+const Header = () => {
   const { game } = useContext(TestContext);
   return (
     <div className="header">

@@ -1,12 +1,19 @@
-import React, { useState, useEffect } from "react";
-const Timer = (props) => {
-  const [seconds, setSeconds] = useState(15);
-  const [intervalId, setIntervalId] = useState(null);
-  //   useEffect(() => {
-  //     const id = window.setInterval(() => {
-  //       setSeconds((seconds) => seconds - 1);
-  //     }, 1000);
-  //   });
+import React, { useState, useEffect, useContext } from "react";
+import { TestContext } from "../../context/TestContext";
+const Timer = () => {
+  const [seconds, setSeconds] = useState(3);
+  const { gameControl } = useContext(TestContext);
+  useEffect(() => {
+    if (seconds > 0) {
+      const id = window.setInterval(() => {
+        setSeconds((seconds) => seconds - 1);
+      }, 1000);
+      return () => window.clearInterval(id);
+    }
+  });
+  if (seconds === 0) {
+    gameControl("time_out");
+  }
   return <div>{seconds}</div>;
 };
 

@@ -21,6 +21,7 @@ const TestContextProvider = (props) => {
     isAnswered: false,
     isCorrect: true,
     isWon: false,
+    time_out: false,
   });
 
   const changeTest = (event) => {
@@ -35,7 +36,7 @@ const TestContextProvider = (props) => {
         break;
       case "toggle_joker":
         let temp = game.questions;
-        if (temp[game.questionNumber].type != "boolean") {
+        if (temp[game.questionNumber].type !== "boolean") {
           temp[game.questionNumber].incorrect_answers.splice(0, 2);
           setGame({ ...game, joker: !game.joker, questions: temp });
         }
@@ -45,8 +46,7 @@ const TestContextProvider = (props) => {
         break;
       case "next_question":
         let correctAnswer = game.questions[game.questionNumber].correct_answer;
-        console.log(game.questionNumber, ">>", game.questions.length - 1);
-        if (input == correctAnswer) {
+        if (input === correctAnswer) {
           if (game.questionNumber < game.questions.length - 1) {
             setGame({
               ...game,
@@ -54,12 +54,14 @@ const TestContextProvider = (props) => {
               isAnswered: true,
             });
           } else {
+            console.log("pppooo");
             setGame({
               ...game,
               score: game.score + 100,
               isWon: true,
+              isAnswered: true,
             });
-            history.push("/");
+            // history.push("/");
           }
         } else {
           setGame({
@@ -76,6 +78,29 @@ const TestContextProvider = (props) => {
           isAnswered: false,
           questionNumber: game.questionNumber + 1,
         });
+        break;
+      case "wrong_answer":
+        setGame({
+          questions: [],
+          joker: true,
+          score: 0,
+          questionNumber: 0,
+          done: false,
+          isAnswered: false,
+          isCorrect: true,
+          isWon: false,
+        });
+        history.push("/");
+        break;
+      case "time_out":
+        setGame({
+          ...game,
+          isAnswered: true,
+          isCorrect: false,
+          isWon: false,
+          time_out: true,
+        });
+        //history.push("/");
         break;
       default:
         break;

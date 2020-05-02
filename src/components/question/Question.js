@@ -3,6 +3,7 @@ import "./Question.css";
 import Button from "../../components/button/Button";
 import { TestContext } from "../../context/TestContext";
 import { shuffleArray } from "../../utilities/shuffleArray";
+import Helpy from "../helpy/Helpy";
 const Question = () => {
   const { game, gameControl } = useContext(TestContext);
   const { questions, questionNumber } = game;
@@ -14,6 +15,7 @@ const Question = () => {
   return (
     <div className="question-form">
       The Right answer is : {correct_answer}
+      {game.joker && <Helpy />}
       <div className="question">{question}</div>
       <div className="answers">
         {answers.map((el, index) => (

@@ -5,10 +5,11 @@ import { TestContext } from "../../context/TestContext";
 import { createUrl } from "../../utilities/createUrl";
 import CorrectScreen from "../../screens/CorrectScreen/CorrectScreen";
 import InCorrectScreen from "../../screens/incorrectscreen/IncorrectScreen";
-const Game = (props) => {
-  const { test, gameControl, game, done } = useContext(TestContext);
+import WinScreen from "../../screens/winscreen/WinScreen";
+import TimeOutScreen from "../../screens/timeoutscreen/TimeOutScreen";
+const Game = () => {
+  const { test, gameControl, game } = useContext(TestContext);
   useEffect(() => {
-    console.log("oops");
     const url = createUrl(test);
     fetch(url).then((response) =>
       response
@@ -18,17 +19,23 @@ const Game = (props) => {
   }, []);
   return (
     <div>
-      {game.isAnswered ? (
-        game.isCorrect ? (
-          <CorrectScreen />
+      {!game.time_out ? (
+        game.isAnswered ? (
+          game.isWon ? (
+            <WinScreen />
+          ) : game.isCorrect ? (
+            <CorrectScreen />
+          ) : (
+            <InCorrectScreen />
+          )
         ) : (
-          <InCorrectScreen />
+          <div>
+            <Header />
+            {game.done && <Question />}
+          </div>
         )
       ) : (
-        <div>
-          <Header />
-          {game.done && <Question />}
-        </div>
+        <TimeOutScreen />
       )}
     </div>
   );

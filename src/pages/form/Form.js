@@ -39,7 +39,7 @@ const Form = (props) => {
         <Select change={changeTest} name="type" options={constants.types} />
       </label>
 
-      <Button title="hello" clicked={() => history.push("/game")} />
+      <Button title="START" clicked={() => history.push("/game")} />
     </div>
   );
 };
