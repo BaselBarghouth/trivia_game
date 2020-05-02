@@ -3,18 +3,17 @@ import "./Question.css";
 import Button from "../../components/button/Button";
 import { TestContext } from "../../context/TestContext";
 import { shuffleArray } from "../../utilities/shuffleArray";
-const Question = (props) => {
+const Question = () => {
   const { game, gameControl } = useContext(TestContext);
   const { questions, questionNumber } = game;
   const singleQuestion = questions[questionNumber];
-
   const { correct_answer, incorrect_answers, question } = singleQuestion;
   const temp = [...incorrect_answers, correct_answer];
   const answers = shuffleArray(temp);
 
   return (
     <div className="question-form">
-      {correct_answer}
+      The Right answer is : {correct_answer}
       <div className="question">{question}</div>
       <div className="answers">
         {answers.map((el, index) => (

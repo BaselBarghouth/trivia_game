@@ -1,0 +1,12 @@
+.animation {
+  width: 350px;
+  height: 350px;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  text-align: center;
+  color: #353c4d;
+}

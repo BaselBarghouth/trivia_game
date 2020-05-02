@@ -18,6 +18,9 @@ const TestContextProvider = (props) => {
     score: 0,
     questionNumber: 0,
     done: false,
+    isAnswered: false,
+    isCorrect: true,
+    isWon: false,
   });
 
   const changeTest = (event) => {
@@ -42,31 +45,44 @@ const TestContextProvider = (props) => {
         break;
       case "next_question":
         let correctAnswer = game.questions[game.questionNumber].correct_answer;
+        console.log(game.questionNumber, ">>", game.questions.length - 1);
         if (input == correctAnswer) {
-          if (game.questionNumber < test.numberOfQuestions - 1) {
+          if (game.questionNumber < game.questions.length - 1) {
             setGame({
               ...game,
-              questionNumber: game.questionNumber + 1,
               score: game.score + 100,
+              isAnswered: true,
             });
           } else {
             setGame({
               ...game,
-
               score: game.score + 100,
+              isWon: true,
             });
             history.push("/");
           }
+        } else {
+          setGame({
+            ...game,
+            isCorrect: false,
+            isAnswered: true,
+          });
         }
 
         break;
-
+      case "next":
+        setGame({
+          ...game,
+          isAnswered: false,
+          questionNumber: game.questionNumber + 1,
+        });
+        break;
       default:
         break;
     }
   };
   return (
-    <TestContext.Provider value={{ test, changeTest, gameControl, game }}>
+    <TestContext.Provider value={{ gameControl, game, changeTest, test }}>
       {props.children}
     </TestContext.Provider>
   );
