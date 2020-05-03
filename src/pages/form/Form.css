@@ -3,7 +3,7 @@
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
-  margin-top: 100px;
+  margin-top: 20px;
 }
 .item {
   display: flex;
@@ -12,6 +12,7 @@
   font-weight: bold;
   color: #27434d;
   font-size: 0.5cm;
+  font-family: "Lalezar", cursive;
 }
 .extra {
   margin-top: 30px;
@@ -19,4 +20,20 @@
 .item-extra {
   font-size: 0.7cm;
   font-weight: bold;
+}
+/* .form-container {
+  display: flex;
+} */
+/* .instructions {
+  width: 50%;
+  margin-top: 100px;
+  font-size: 0.7cm;
+  font-weight: bold;
+  text-align: center;
+  color: #27434d;
+} */
+.trivia {
+  font-size: 0.9cm;
+  font-weight: bold;
+  color: white;
 }

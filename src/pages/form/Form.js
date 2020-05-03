@@ -11,35 +11,45 @@ const Form = () => {
   const { test, changeTest } = useContext(TestContext);
   let history = useHistory();
   return (
-    <div className="form">
-      <label className="item item-extra">
-        Number Of Questions
-        <br /> <br />
-        {test.numberOfQuestions}
-        <Range name="numberOfQuestions" change={changeTest} min={10} max={50} />
-      </label>
-      <label className="item extra">
-        Category
-        <Select
-          change={changeTest}
-          name="category"
-          options={constants.categories}
-        />
-      </label>
-      <label className="item">
-        Difficulty
-        <Select
-          change={changeTest}
-          name="difficulty"
-          options={constants.difficulty}
-        />
-      </label>
-      <label className="item">
-        Type
-        <Select change={changeTest} name="type" options={constants.types} />
-      </label>
+    <div className="form-container">
+      {/* <div className="instructions"></div> */}
 
-      <Button title="START" clicked={() => history.push("/game")} />
+      <div className="form">
+        <label className="item item-extra">
+          <div className="trivia">Trivia Game</div>
+          Number Of Questions
+          <br /> <br />
+          {test.numberOfQuestions}
+          <Range
+            name="numberOfQuestions"
+            change={changeTest}
+            min={10}
+            max={50}
+          />
+        </label>
+        <label className="item extra">
+          Category
+          <Select
+            change={changeTest}
+            name="category"
+            options={constants.categories}
+          />
+        </label>
+        <label className="item">
+          Difficulty
+          <Select
+            change={changeTest}
+            name="difficulty"
+            options={constants.difficulty}
+          />
+        </label>
+        <label className="item">
+          Type
+          <Select change={changeTest} name="type" options={constants.types} />
+        </label>
+
+        <Button title="START" clicked={() => history.push("/game")} />
+      </div>
     </div>
   );
 };
